@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "sass src/scss:dist/css",
-    "watch": "sass --watch src/scss:dist/css & live-server"
+    "watch": "sass --watch src/scss:dist/css & live-server",
+    "format": "prettier -w src/**/*.js",
+    "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --cache --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -23,12 +27,30 @@
   },
   "homepage": "https://github.com/Pjatte1337/semester-project-2#readme",
   "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
     "eslint": "^8.29.0",
+    "eslint-plugin-jest": "^27.1.6",
+    "husky": "^8.0.2",
+    "jest": "^29.2.0",
+    "lint-staged": "^13.1.0",
     "live-server": "^1.2.2",
     "prettier": "^2.8.0",
     "sass": "^1.56.1"
   },
   "dependencies": {
     "bootstrap": "^5.2.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
   }
 }
