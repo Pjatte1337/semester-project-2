@@ -1,54 +1,258 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cashflow</title>
-    <link rel="stylesheet" href="/dist/css/index.css">
+    <link rel="stylesheet" href="/dist/css/index.css" />
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body class="d-flex flex-column h-100">
-
-   <!--Header / navbar-->
-   <header class="py-3 sticky-top shadow">
-    <div class="container-fluid">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-sm-start">
-        <a href="./" class="d-flex align-items-center mb-2 me-sm-3 mb-sm-0 text-white text-decoration-none">
-          <img style="width: 7.5rem" src="src/images/logo.png" alt="Logo" />
-        </a>
-        <form class="col mb-3 mb-sm-0 me-sm-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
-            aria-label="Search" />
-        </form>
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-warning me-2" data-auth="logout" data-visible="loggedIn">
-            Logout
-          </button>
-          <button type="button" class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#loginModal"
-            data-auth="login" data-visible="loggedOut">
-            Login
-          </button>
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal"
-            data-auth="register" data-visible="loggedOut">
-            Create Profile
-          </button>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <!--Header / navbar-->
+    <header class="py-3 sticky-top shadow">
+      <div class="container-fluid">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-sm-start"
+        >
+          <a
+            href="./"
+            class="d-flex align-items-center mb-2 me-sm-3 mb-sm-0 text-white text-decoration-none"
+          >
+            <img style="width: 7.5rem" src="src/assets/logo.png" alt="Logo" />
+          </a>
+          <form class="col mb-3 mb-sm-0 me-sm-3" role="search">
+            <input
+              type="search"
+              class="form-control form-control-dark text-bg-dark"
+              placeholder="Search..."
+              aria-label="Search"
+            />
+          </form>
+          <div class="text-end">
+            <button
+              type="button"
+              class="btn btn-outline-warning me-2"
+              data-auth="logout"
+              data-visible="loggedIn"
+            >
+              Logout
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-success me-2"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+              data-auth="login"
+              data-visible="loggedOut"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-toggle="modal"
+              data-bs-target="#createModal"
+              data-auth="register"
+              data-visible="loggedOut"
+            >
+              Create Profile
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
+    <!--Content-->
+    <main class="d-flex flex-column mt-5 flex-fill">
+      <div class="container-fluid d-flex justify-content-center">
+        <div class="d-flex flex-column gap-2 justify-content-center">
+          <h1 class="justify-content-center">Welcome to CashFlow</h1>
+          <!-- log inModal -->
+          <div
+            class="modal fade"
+            id="loginModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form
+                    action=""
+                    method="post"
+                    id="login"
+                    class="d-flex flex-column gap-3 needs-validation"
+                  >
+                    <div class="form-group was-validated">
+                      <label class="form-label" for="email"
+                        >Email address</label
+                      >
+                      <input
+                        class="form-control"
+                        type="email"
+                        id="email"
+                        name="email"
+                        pattern="[\w\-.]+@(stud.)?noroff.no"
+                        title='You can only log in with a valid email that ends with "@noroff.no" or "@stud.noroff.no'
+                        required
+                      />
+                      <div class="invalid-feedback d-none">
+                        Please enter your email address
+                      </div>
+                    </div>
+                    <div class="form-group was-validated">
+                      <label class="form-label" for="pw">Password</label>
+                      <input
+                        class="form-control"
+                        type="password"
+                        id="pw"
+                        name="pw"
+                        required
+                      />
+                      <div class="invalid-feedback d-none">
+                        Please enter your password
+                      </div>
+                    </div>
+                    <input
+                      class="btn btn-outline-theme text-black w-100"
+                      type="submit"
+                      value="LogIn"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Register Modal -->
+          <div
+            class="modal fade"
+            id="createModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form
+                    id="registerForm"
+                    class="d-flex flex-column gap-3 needs-validation"
+                  >
+                    <div class="form-group was-validated">
+                      <label class="form-label" for="reg-username"
+                        >Username</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control py-3"
+                        name="name"
+                        id="reg-username"
+                        placeholder="username"
+                        aria-label="username"
+                        required
+                        pattern="^[\w]+$"
+                        title="Username must only contain lower case and uppercase letters, numbers and underscore"
+                      />
+                    </div>
+                    <div class="form-group was-validated">
+                      <label class="form-label" for="reg-email"
+                        >Email address</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control py-3"
+                        name="email"
+                        id="reg-email"
+                        placeholder="email"
+                        aria-label="email"
+                        required
+                        pattern="^[\w\-.]+@(stud.)?noroff.no$"
+                        title="Only users with @noroff.no or @stud.noroff.no email can register profile"
+                      />
+                    </div>
+                    <div class="form-group was-validated">
+                      <label class="form-label" for="reg-Password"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control py-3"
+                        name="password"
+                        id="reg-Password"
+                        placeholder="password"
+                        aria-label="password"
+                        required
+                        minlength="8"
+                        title="Must be at least 8 characters long"
+                      />
+                    </div>
+                    <div class="form-group was-validated">
+                      <label class="form-label" for="reg-Password-confirm"
+                        >Repeat password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control py-3"
+                        name="password"
+                        id="reg-Password-confirm"
+                        placeholder="repeat password"
+                        aria-label="password"
+                        required
+                        minlength="8"
+                      />
+                    </div>
+                    <div>
+                      <button
+                        type="submit"
+                        class="btn btn-outline-theme text-black w-100"
+                        id="sign-up"
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid d-flex justify-content-center">
+        <div class="d-flex flex-column gap-2 justify-content-center">
+          <h1 class="justify-content-center">cards</h1>
+        </div>
+      </div>
+    </main>
 
-   <!--Content-->
-  <main>        
-  </main>
-
-  <!--Footer-->
-  <footer class="footer mt-auto py-3">
-    <div class="container-fluid d-flex justify-content-center bg-theme-bg-sec p-3">
-     <div>
-      <p>Copyright Joakim Vanebo 2022</p>
-     </div>
-    </div>
-   </footer>
-</body>
+    <!--Footer-->
+    <footer class="footer mt-auto py-3">
+      <div
+        class="container-fluid d-flex justify-content-center bg-theme-bg-sec p-3"
+      >
+        <div>
+          <p>Copyright Joakim Vanebo 2022</p>
+        </div>
+      </div>
+    </footer>
+    <script src="./index.js" type="module"></script>
+  </body>
 </html>
