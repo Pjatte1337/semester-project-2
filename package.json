@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/Pjatte1337/semester-project-2#readme",
   "devDependencies": {
+    "eslint": "^8.29.0",
     "live-server": "^1.2.2",
+    "prettier": "^2.8.0",
     "sass": "^1.56.1"
   },
   "dependencies": {
