@@ -3,6 +3,13 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 
-body {
-    background-color: black;
+header,
+footer{
+    background-color: $gray-900;
+    color: $white;
 }
+
+body {
+    background-color: $gray-600;
+}
+

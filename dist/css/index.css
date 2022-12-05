@@ -10769,8 +10769,14 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+header,
+footer {
+  background-color: #212529;
+  color: #fff;
+}
+
 body {
-  background-color: black;
+  background-color: #6c757d;
 }
 
 /*# sourceMappingURL=index.css.map */
